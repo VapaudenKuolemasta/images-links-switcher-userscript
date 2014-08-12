@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name          	Images/links switcher
 // @description   	Insert images instead of links, or links instead of images.
-// @version 		1.0.1
+// @version 		1.0.2
 // @homepageURL 	https://github.com/VapaudenKuolemasta/images-links-switcher-userscript
 // @updateURL 		https://github.com/VapaudenKuolemasta/images-links-switcher-userscript/raw/master/images_switcher.user.js
 // @grant 			GM_registerMenuCommand
@@ -18,13 +18,13 @@ GM_registerMenuCommand('Switch "images/links"', function(){
 		GM_setValue( document.domain, true );
 	}
 	
-	toggler( linkToImg );
+	toggler( linkToImg ); 
 });
 
 function toggler( linkToImg ){
 	for (var key in document.getElementsByTagName('a')){
 		var val = document.getElementsByTagName('a')[key];
-		if( val.getAttribute('href').search(/(.jpg|.png|.jpeg)/)+1 ){
+		if( val.getAttribute('href').search(/(.jpg|.png|.jpeg)/i)+1 ){
 			if( linkToImg ){
 				img = new Image();
 				img.onload = function() {
